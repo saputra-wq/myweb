@@ -3,192 +3,132 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ALEX | Premium Profile</title>
+  <title>ALEX | Web Hosting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=VT323&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom right, #000000, #0f0f0f, #1a1a1a);
-      font-family: 'Segoe UI', sans-serif;
-      color: white;
-      overflow-x: hidden;
-    }
-
-    .rain {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      background-image: url('https://i.ibb.co/fQ8q1Ft/rain-overlay.gif');
-      background-size: cover;
-      opacity: 0.2;
-      z-index: 0;
-    }
-
-    .container {
-      position: relative;
-      z-index: 1;
+      font-family: 'VT323', monospace;
+      background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+      color: #00f7ff;
       text-align: center;
-      padding: 60px 20px;
     }
-
-    .profile-pic {
+    .profile-img {
       width: 160px;
       height: 160px;
       border-radius: 50%;
-      border: 4px solid #00ffff;
-      object-fit: cover;
-      box-shadow: 0 0 30px #00ffffaa;
-      margin-bottom: 15px;
+      border: 4px solid #00f7ff;
+      margin-top: 50px;
+      box-shadow: 0 0 25px #00f7ff;
     }
-
     h1 {
-      font-size: 2.5em;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 32px;
       margin: 10px 0;
-      color: #00ffff;
-      text-shadow: 0 0 15px #00ffffaa;
     }
-
     .desc {
-      font-size: 1.2em;
-      margin: 40px 0;
-      color: #00ffff;
-      min-height: 40px;
-      text-shadow: 0 0 5px #00ffffaa;
+      font-size: 20px;
+      margin-bottom: 30px;
+      line-height: 1.7;
     }
-
-    .accounts {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 60px;
-    }
-
-    .account {
-      background: #111;
-      padding: 14px 28px;
+    .link-btn {
+      display: block;
+      margin: 15px auto;
+      padding: 15px 30px;
+      width: 240px;
+      background-color: #000;
+      border: 2px solid #00f7ff;
       border-radius: 12px;
-      width: 280px;
-      text-align: center;
-      border: 2px solid #00ffff;
-      color: #00ffff;
-      transition: all 0.3s ease;
+      color: #00f7ff;
+      font-size: 20px;
       text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 0 12px #00ffff55;
+      box-shadow: 0 0 10px #00f7ff;
+      transition: 0.3s;
     }
-
-    .account:hover {
-      background: #00ffff33;
-      box-shadow: 0 0 15px #00ffffcc;
-      transform: scale(1.06);
+    .link-btn:hover {
+      background-color: #00f7ff;
+      color: #000;
+      box-shadow: 0 0 20px #00f7ff;
     }
-
-    .thanks {
-      margin-top: 60px;
-      font-size: 1.2em;
-      padding: 30px 20px;
-      background: #101010;
-      border-top: 3px solid #00ffffaa;
-      border-bottom: 3px solid #00ffffaa;
-      box-shadow: 0 0 25px #00ffff44 inset;
+    .footer {
+      margin-top: 50px;
+      padding: 30px;
+      background: #0a0a0a;
+      color: #fff;
     }
-
-    .thanks .pp {
-      width: 90px;
-      height: 90px;
+    .footer img {
+      width: 80px;
       border-radius: 50%;
-      border: 3px solid #00ffff88;
-      margin-bottom: 15px;
+      border: 2px solid #00f7ff;
+      box-shadow: 0 0 15px #00f7ff;
     }
-
-    .thanks-text {
-      max-width: 600px;
-      margin: auto;
-      line-height: 1.8;
-      color: #ddd;
-      text-shadow: 0 0 5px #00ffff33;
+    .footer p {
+      font-size: 18px;
+      margin-top: 15px;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
     }
-
-    @media(max-width: 480px) {
-      .account {
-        width: 90%;
-      }
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
-
-    .typewriter-text {
-      display: inline-block;
+    .anim-bar {
+      font-size: 18px;
+      color: #00f7ff;
+      margin-top: 10px;
       overflow: hidden;
+      height: 30px;
+      position: relative;
+    }
+    .anim-bar span {
+      position: absolute;
       white-space: nowrap;
-      border-right: 3px solid #00ffff;
-      animation: typing 3s steps(30, end), blink 0.8s infinite;
+      animation: scrollText 20s steps(4) infinite;
+    }
+    @keyframes scrollText {
+      0%   {left: 100%;}
+      25%  {left: 0;}
+      50%  {left: -100%;}
+      75%  {left: -200%;}
+      100% {left: -300%;}
     }
   </style>
 </head>
 <body>
 
-  <div class="rain"></div>
+  <img src="pp.jpg" alt="Profile" class="profile-img" />
+  <h1>ALEX</h1>
 
-  <div class="container">
-    <img src="pp.jpg" alt="Profil ALEX" class="profile-pic" />
-    <h1>ALEX</h1>
-    <div class="desc">
-      <span id="typewriter" class="typewriter-text"></span>
-    </div>
-
-    <div class="accounts">
-      <a class="account" href="https://wa.me/6285608969326" target="_blank">WhatsApp</a>
-      <a class="account" href="https://instagram.com/alexjanda10" target="_blank">Instagram</a>
-      <a class="account" href="https://youtube.com/@Alexander1-j7k" target="_blank">YouTube</a>
-      <a class="account" href="https://tiktok.com/@alex66xander" target="_blank">TikTok</a>
-      <a class="account" href="https://discord.com/users/alexnockxander" target="_blank">Discord</a>
-    </div>
-
-    <div class="thanks">
-      <img src="pp.jpg" alt="Terima Kasih" class="pp" />
-      <div class="thanks-text">
-        TERIMA KASIH telah mengunjungi halaman ini. Kehadiranmu sangat berarti. Semoga semua yang kulakukan bisa bermanfaat dan memberi inspirasi. Jangan ragu untuk terhubung dan saling support. Sampai jumpa di proyek-proyek berikutnya!
-      </div>
-    </div>
+  <div class="desc">
+    👨‍💻 Fullstack Developer & AI Programmer |<br>
+    🛠️ Menyediakan Jasa Bot Telegram & WhatsApp |<br>
+    💡 Spesialis Web Otomatisasi & Tooling Premium |<br>
+    🔒 Full Anti Gratisan - Semua Serba Pro |<br>
+    📲 Android Modder, Termux Hacker & Jailbreaker |<br>
+    ☁️ Jasa Hosting, Domain, Subdomain & VPS |<br>
+    🧠 Fokus Inovasi, Efisiensi, & Otomatisasi |<br>
+    🚀 Bergabung Dengan Komunitas Premium Sekarang |
   </div>
 
-  <script>
-    const teks = [
-      "👨‍💻 Developer & Programmer |",
-      "💡 Fullstack Web Designer |",
-      "🛠️ Open Jasa Web & Bot |",
-      "🔒 Anti Gratisan, Full Premium |",
-      "☁️ Hosting, Domain & VPS Ready |",
-      "🧠 AI Tools & Automation Expert |",
-      "📲 Android Modder & Jailbreaker |",
-      "🧪 Explore, Build & Innovate |"
-    ];
-    let i = 0;
-    const typewriter = document.getElementById("typewriter");
+  <div class="anim-bar">
+    <span>| Anti Gratisan | Tools Auto | Script Full | Termux Ready | API Integrasi | Dukungan Cepat |</span>
+  </div>
 
-    function tampilkanTeks() {
-      typewriter.classList.remove("typewriter-text");
-      void typewriter.offsetWidth; // reset animation
-      typewriter.classList.add("typewriter-text");
-      typewriter.textContent = teks[i];
-      i = (i + 1) % teks.length;
-    }
+  <!-- Sosmed Links -->
+  <a href="https://wa.me/6285608969326?text=Assalamualaikum" class="link-btn">WhatsApp</a>
+  <a href="https://instagram.com/alexjanda10" class="link-btn">Instagram</a>
+  <a href="https://youtube.com/@alexander1-j7k" class="link-btn">YouTube</a>
+  <a href="https://tiktok.com/@alex66xander" class="link-btn">TikTok</a>
+  <a href="https://discord.com/users/alexnockxander" class="link-btn">Discord</a>
 
-    tampilkanTeks();
-    setInterval(tampilkanTeks, 3500);
-  </script>
+  <!-- Footer -->
+  <div class="footer">
+    <img src="pp.jpg" alt="Footer PP">
+    <p>
+      🙏 Terima kasih sudah mengunjungi halaman ini. Setiap kunjunganmu sangat berarti.  
+      Semoga informasi dan layanan yang tersedia di sini bermanfaat dan membuka jalan untuk kolaborasi.  
+      Jangan ragu menghubungi saya untuk segala bentuk kerja sama, request script, atau konsultasi seputar project.
+    </p>
+  </div>
 
 </body>
 </html>
