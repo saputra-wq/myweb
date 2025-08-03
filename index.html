@@ -3,227 +3,152 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Alex Web</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <title>ALEX | Premium Profile</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Orbitron', sans-serif;
-      color: #fff;
-      background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+      background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Rain Effect */
+    .rain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background-image: url('https://i.ibb.co/fQ8q1Ft/rain-overlay.gif');
       background-size: cover;
-      text-align: center;
+      opacity: 0.3;
+      z-index: 0;
     }
 
     .container {
-      padding: 30px 15px;
-      background-color: rgba(0, 0, 0, 0.65);
-      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 60px 20px;
     }
 
-    img.profile {
-      width: 150px;
-      height: 150px;
+    .profile-pic {
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
-      border: 4px solid #0ff;
-      box-shadow: 0 0 15px #0ff;
+      border: 4px solid #00ffff;
+      object-fit: cover;
+      box-shadow: 0 0 30px #00ffffaa;
+      margin-bottom: 15px;
     }
 
     h1 {
-      color: #00ffff;
       font-size: 2.5em;
-      margin: 20px 0 10px;
-    }
-
-    .typing {
-      font-size: 18px;
-      margin-bottom: 30px;
-      color: #0ff;
-      height: 24px;
-    }
-
-    .button-container {
-      margin: 20px 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .button {
-      padding: 10px 20px;
-      background-color: #111;
-      border: 2px solid #0ff;
-      border-radius: 20px;
-      color: #0ff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s ease;
-    }
-
-    .button:hover {
-      background-color: #0ff;
-      color: #000;
-      box-shadow: 0 0 10px #0ff;
-    }
-
-    .thankyou {
-      margin-top: 40px;
-      padding: 20px;
-      border-radius: 10px;
-      background: rgba(0, 0, 0, 0.6);
-      color: #fff;
-      border: 2px solid #0ff;
-      box-shadow: 0 0 10px #0ff;
-    }
-
-    .thankyou h2 {
+      margin: 10px 0;
       color: #00ffff;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <img src="pp.jpg" alt="Foto Profil" class="profile" />
-    <h1>ALEX</h1>
-    <div class="typing" id="typewriter"></div>
-
-    <div class="button-container">
-      <a href="#" class="button">WhatsApp</a>
-      <a href="#" class="button">Instagram</a>
-      <a href="#" class="button">YouTube</a>
-      <a href="#" class="button">TikTok</a>
-      <a href="#" class="button">Discord</a>
-    </div>
-
-    <div class="thankyou">
-      <img src="pp.jpg" style="width: 60px; height: 60px; border-radius: 50%;" />
-      <h2>TERIMA KASIH</h2>
-      <p>
-        Terima kasih telah mengunjungi halaman pribadi ALEX.<br/>
-        Semoga karya ini bisa menginspirasi, membantu, dan memperluas kreativitas kamu semua.<br/>
-        Mari terus berkembang, belajar, dan berbagi ilmu bersama.<br/>
-        Dunia digital luas, dan kamu adalah bagian penting dari petualangan ini!
-      </p>
-    </div>
-  </div>
-
-  <script>
-    const textArray = [
-      "Codingan Web",
-      "Web Gratis",
-      "Content Creator",
-      "Hostingan",
-      "JB Expert",
-      "UI/UX Designer",
-      "Open Service Coding",
-      "Free Landing Page",
-      "Script Bot Telegram",
-      "Script Hosting",
-      "Dark Web Enthusiast",
-      "Cyber Security Noob",
-      "Suka Ngetik HTML",
-      "Belajar CSS Terus",
-      "Suka Modifikasi Style",
-      "Penyedia Hosting Gratis",
-      "Dark Style Lover"
-    ];
-    let idx = 0, charIdx = 0, isDeleting = false;
-    const typingElement = document.getElementById("typewriter");
-
-    function typeEffect() {
-      const currentText = textArray[idx];
-      if (isDeleting) {
-        charIdx--;
-        typingElement.textContent = currentText.substring(0, charIdx);
-      } else {
-        charIdx++;
-        typingElement.textContent = currentText.substring(0, charIdx);
-      }
-
-      let delay = isDeleting ? 50 : 150;
-
-      if (!isDeleting && charIdx === currentText.length) {
-        delay = 1000;
-        isDeleting = true;
-      } else if (isDeleting && charIdx === 0) {
-        isDeleting = false;
-        idx = (idx + 1) % textArray.length;
-        delay = 500;
-      }
-
-      setTimeout(typeEffect, delay);
+      text-shadow: 0 0 15px #00ffffaa;
     }
 
-    typeEffect();
-  </script>
-</body>
-</html>      color: black;
+    .desc {
+      font-size: 1.1em;
+      color: #ccc;
+      margin-bottom: 40px;
+    }
+
+    .accounts {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 60px;
+    }
+
+    .account {
+      background: #111;
+      padding: 12px 24px;
+      border-radius: 12px;
+      width: 280px;
+      text-align: center;
+      border: 1px solid #00ffff55;
+      color: #00ffff;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .account:hover {
+      background: #00ffff22;
+      box-shadow: 0 0 12px #00ffff99;
       transform: scale(1.05);
     }
 
-    .thankyou {
+    .thanks {
       margin-top: 60px;
-      padding: 30px 20px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      box-shadow: 0 0 20px rgba(0,255,255,0.3);
+      font-size: 1.2em;
+      padding: 20px;
+      background: #181818;
+      border-top: 2px solid #00ffff44;
+      border-bottom: 2px solid #00ffff44;
     }
 
-    .thankyou img {
+    .thanks .pp {
       width: 80px;
       height: 80px;
       border-radius: 50%;
+      border: 2px solid #00ffff88;
       margin-bottom: 15px;
     }
 
-    .thankyou h2 {
-      color: #00ffff;
-      font-size: 24px;
-      margin-bottom: 15px;
-    }
-
-    .thankyou p {
-      color: #ccc;
-      font-size: 16px;
+    .thanks-text {
+      max-width: 600px;
+      margin: auto;
       line-height: 1.6;
+      color: #ccc;
     }
 
-    @keyframes pulse {
-      0%, 100% { text-shadow: 0 0 10px #00ffff; }
-      50% { text-shadow: 0 0 20px #00ffff; }
+    @media(max-width: 480px) {
+      .account {
+        width: 90%;
+      }
     }
   </style>
 </head>
 <body>
+
   <div class="rain"></div>
 
-  <div class="content">
-    <img src= "pp.jpg" alt="Profil ALEX" class="profile-pic" />
+  <div class="container">
+    <img src="pp.jpg" alt="Profil ALEX" class="profile-pic" />
     <h1>ALEX</h1>
-    <p class="desc">Codingan Web + Web Gratis + Content Creator + Hostingan + JB</p>
+    <div class="desc">
+  👨‍💻 Developer & Programmer<br>
+  💡 Fullstack Web Designer<br>
+  🛠️ Open Jasa Web & Bot<br>
+  🔒 Anti Gratisan, Full Premium<br>
+  ☁️ Hosting, Domain & VPS Ready<br>
+  🧠 AI Tools & Automation Expert<br>
+  📲 Android Modder & Jailbreaker<br>
+  🧪 Explore, Build & Innovate
+     </div>
 
-    <div class="social">
-      <a href="https://wa.me/6285608969326">WhatsApp</a>
-      <a href="https://instagram.com/alexjanda10">Instagram</a>
-      <a href="https://youtube.com/@Alexander1-j7k">YouTube</a>
-      <a href="https://tiktok.com/@alex66xander">TikTok</a>
-      <a href="https://discord.com/users/alexnockxander">Discord</a>
+    <div class="accounts">
+      <a class="account" href="https://wa.me/6285608969326" target="_blank">WhatsApp</a>
+      <a class="account" href="https://instagram.com/alexjanda10" target="_blank">Instagram</a>
+      <a class="account" href="https://youtube.com/@Alexander1-j7k" target="_blank">YouTube</a>
+      <a class="account" href="https://tiktok.com/@alex66xander" target="_blank">TikTok</a>
+      <a class="account" href="https://discord.com/users/alexnockxander" target="_blank">Discord</a>
     </div>
 
-    <div class="thankyou">
-      <img src="pp.jpg" alt="Thanks Profil" />
-      <h2>TERIMA KASIH</h2>
-      <p>
-        Terima kasih telah mengunjungi halaman pribadi ALEX. Semoga karya ini bisa menginspirasi,
-        membantu, dan memperluas kreativitas kamu semua. Mari terus berkembang, belajar, dan berbagi
-        ilmu bersama. Dunia digital luas, dan kamu adalah bagian penting dari petualangan ini!
-      </p>
+    <div class="thanks">
+      <img src="pp.jpg" alt="Terima Kasih" class="pp" />
+      <div class="thanks-text">
+        TERIMA KASIH telah mengunjungi halaman ini. Kehadiranmu sangat berarti. Semoga semua yang kulakukan bisa bermanfaat dan memberi inspirasi. Jangan ragu untuk terhubung dan saling support. Sampai jumpa di proyek-proyek berikutnya!
+      </div>
     </div>
   </div>
+
 </body>
 </html>
