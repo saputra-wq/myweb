@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Alex </title>
+  <title>ALEX</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -12,17 +12,16 @@
     }
     body {
       height: 100vh;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      background: radial-gradient(ellipse at center, #0f0c29 0%, #24243e 100%);
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
       text-align: center;
-      flex-direction: column;
-      overflow: hidden;
+      color: #fff;
       position: relative;
     }
-    .rain {
+    .rain, .spark {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
@@ -36,46 +35,194 @@
       object-fit: cover;
       border: 3px solid #fff;
       margin-bottom: 20px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+      box-shadow: 0 0 25px #00fff7;
+      animation: pulse 3s infinite;
       z-index: 1;
     }
     h1 {
-      font-size: 34px;
+      font-size: 42px;
+      color: #00fff7;
+      text-shadow: 0 0 10px #00fff7;
       margin-bottom: 5px;
       z-index: 1;
     }
     .typing {
-      font-size: 18px;
+      font-size: 20px;
       margin-bottom: 30px;
-      height: 25px;
       z-index: 1;
     }
     .buttons a {
       display: inline-block;
-      margin: 8px;
-      padding: 12px 24px;
+      margin: 10px;
+      padding: 12px 28px;
       border: 2px solid #00fff7;
-      border-radius: 30px;
+      border-radius: 40px;
       text-decoration: none;
       color: #00fff7;
-      background: rgba(0,0,0,0.2);
+      background: rgba(0, 0, 0, 0.3);
       transition: all 0.3s ease;
-      box-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7 inset;
+      box-shadow: 0 0 15px #00fff7;
       z-index: 1;
     }
     .buttons a:hover {
       background-color: #00fff7;
       color: #000;
-      box-shadow: 0 0 20px #00fff7, 0 0 40px #00fff7 inset;
+      box-shadow: 0 0 25px #00fff7;
     }
     footer {
       position: absolute;
-      bottom: 10px;
-      font-size: 13px;
-      opacity: 0.5;
+      bottom: 20px;
+      font-size: 14px;
+      color: #ccc;
       z-index: 1;
     }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 15px #00fff7; }
+      50% { box-shadow: 0 0 35px #00fff7; }
+      100% { box-shadow: 0 0 15px #00fff7; }
+    }
   </style>
+</head>
+<body>
+  <canvas class="rain"></canvas>
+  <canvas class="spark"></canvas>
+
+  <img src="pp.jpg" alt="Profile" class="profile-pic" />
+  <h1>ALEX</h1>
+  <div class="typing" id="typeText"></div>
+  <div class="buttons">
+    <a href="https://wa.me/6285608969326" target="_blank">WhatsApp</a>
+    <a href="https://instagram.com/alexjanda10" target="_blank">Instagram</a>
+    <a href="https://tiktok.com/@alex66xander" target="_blank">TikTok</a>
+    <a href="https://youtube.com/@Alexander1-j7k" target="_blank">YouTube</a>
+    <a href="https://discord.com/users/alexnockxander" target="_blank">Discord</a>
+  </div>
+  <footer>Terima kasih telah mengunjungi!</footer>
+
+  <script>
+    // Typing effect
+    const texts = ["Developer", "Editor", "Content Creator", "Dark Web Explorer"];
+    let i = 0, j = 0, currentText = "", isDeleting = false;
+    function type() {
+      const typing = document.getElementById("typeText");
+      if (i < texts.length) {
+        if (!isDeleting && j <= texts[i].length) {
+          currentText = texts[i].substring(0, j++);
+        } else if (isDeleting && j >= 0) {
+          currentText = texts[i].substring(0, j--);
+        }
+        typing.innerHTML = currentText + (j % 2 === 0 ? "|" : " ");
+        if (j === texts[i].length + 1) {
+          isDeleting = true;
+          setTimeout(type, 1000);
+        } else if (isDeleting && j === 0) {
+          isDeleting = false;
+          i = (i + 1) % texts.length;
+          setTimeout(type, 300);
+        } else {
+          setTimeout(type, isDeleting ? 40 : 100);
+        }
+      }
+    }
+    type();
+
+    // Rain animation
+    const canvas = document.querySelector('.rain');
+    const ctx = canvas.getContext('2d');
+    let w = canvas.width = window.innerWidth;
+    let h = canvas.height = window.innerHeight;
+    let drops = [];
+
+    for (let i = 0; i < 300; i++) {
+      drops.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        l: Math.random() * 1,
+        xs: -4 + Math.random() * 4 + 2,
+        ys: Math.random() * 10 + 10
+      });
+    }
+
+    function drawRain() {
+      ctx.clearRect(0, 0, w, h);
+      ctx.strokeStyle = "rgba(174,194,224,0.5)";
+      ctx.lineWidth = 1;
+      ctx.lineCap = "round";
+
+      for (let i = 0; i < drops.length; i++) {
+        let d = drops[i];
+        ctx.beginPath();
+        ctx.moveTo(d.x, d.y);
+        ctx.lineTo(d.x + d.xs, d.y + d.l * d.ys);
+        ctx.stroke();
+      }
+
+      moveRain();
+    }
+
+    function moveRain() {
+      for (let i = 0; i < drops.length; i++) {
+        let d = drops[i];
+        d.x += d.xs;
+        d.y += d.ys;
+        if (d.x > w || d.y > h) {
+          d.x = Math.random() * w;
+          d.y = -20;
+        }
+      }
+    }
+
+    setInterval(drawRain, 30);
+    window.addEventListener('resize', () => {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    });
+
+    // Sparkling particles
+    const sparkCanvas = document.querySelector('.spark');
+    const sparkCtx = sparkCanvas.getContext('2d');
+    sparkCanvas.width = window.innerWidth;
+    sparkCanvas.height = window.innerHeight;
+
+    let sparks = [];
+    for (let i = 0; i < 100; i++) {
+      sparks.push({
+        x: Math.random() * sparkCanvas.width,
+        y: Math.random() * sparkCanvas.height,
+        r: Math.random() * 1.5,
+        d: Math.random() * 1
+      });
+    }
+
+    function drawSpark() {
+      sparkCtx.clearRect(0, 0, sparkCanvas.width, sparkCanvas.height);
+      sparkCtx.fillStyle = "rgba(255,255,255,0.3)";
+      sparkCtx.beginPath();
+      for (let i = 0; i < sparks.length; i++) {
+        let p = sparks[i];
+        sparkCtx.moveTo(p.x, p.y);
+        sparkCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2, true);
+      }
+      sparkCtx.fill();
+      moveSpark();
+    }
+
+    function moveSpark() {
+      for (let i = 0; i < sparks.length; i++) {
+        let p = sparks[i];
+        p.y -= p.d;
+        if (p.y < 0) {
+          p.y = sparkCanvas.height;
+          p.x = Math.random() * sparkCanvas.width;
+        }
+      }
+    }
+
+    setInterval(drawSpark, 50);
+  </script>
+</body>
+</html>  </style>
 </head>
 <body>
   <canvas class="rain"></canvas>
@@ -92,7 +239,7 @@
   <footer>© 2025 Alex | RainDrop UI</footer>
 
   <script>
-    const texts = ["Developer", "Editor", "Content Creator", "Dark Web Explorer"];
+    const texts = ["Developer", "Editor", "Content Creator", "Dark Web Explorer", "Codingan Free"];
     let i = 0, j = 0, currentText = "", isDeleting = false;
 
     function type() {
