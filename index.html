@@ -8,14 +8,12 @@
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+      background: linear-gradient(to bottom right, #000000, #0f0f0f, #1a1a1a);
       font-family: 'Segoe UI', sans-serif;
       color: white;
       overflow-x: hidden;
-      position: relative;
     }
 
-    /* Rain Effect */
     .rain {
       position: fixed;
       top: 0;
@@ -25,7 +23,7 @@
       pointer-events: none;
       background-image: url('https://i.ibb.co/fQ8q1Ft/rain-overlay.gif');
       background-size: cover;
-      opacity: 0.3;
+      opacity: 0.2;
       z-index: 0;
     }
 
@@ -54,9 +52,11 @@
     }
 
     .desc {
-      font-size: 1.1em;
-      color: #ccc;
-      margin-bottom: 40px;
+      font-size: 1.2em;
+      margin: 40px 0;
+      color: #00ffff;
+      min-height: 40px;
+      text-shadow: 0 0 5px #00ffffaa;
     }
 
     .accounts {
@@ -69,50 +69,71 @@
 
     .account {
       background: #111;
-      padding: 12px 24px;
+      padding: 14px 28px;
       border-radius: 12px;
       width: 280px;
       text-align: center;
-      border: 1px solid #00ffff55;
+      border: 2px solid #00ffff;
       color: #00ffff;
       transition: all 0.3s ease;
       text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 12px #00ffff55;
     }
 
     .account:hover {
-      background: #00ffff22;
-      box-shadow: 0 0 12px #00ffff99;
-      transform: scale(1.05);
+      background: #00ffff33;
+      box-shadow: 0 0 15px #00ffffcc;
+      transform: scale(1.06);
     }
 
     .thanks {
       margin-top: 60px;
       font-size: 1.2em;
-      padding: 20px;
-      background: #181818;
-      border-top: 2px solid #00ffff44;
-      border-bottom: 2px solid #00ffff44;
+      padding: 30px 20px;
+      background: #101010;
+      border-top: 3px solid #00ffffaa;
+      border-bottom: 3px solid #00ffffaa;
+      box-shadow: 0 0 25px #00ffff44 inset;
     }
 
     .thanks .pp {
-      width: 80px;
-      height: 80px;
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
-      border: 2px solid #00ffff88;
+      border: 3px solid #00ffff88;
       margin-bottom: 15px;
     }
 
     .thanks-text {
       max-width: 600px;
       margin: auto;
-      line-height: 1.6;
-      color: #ccc;
+      line-height: 1.8;
+      color: #ddd;
+      text-shadow: 0 0 5px #00ffff33;
     }
 
     @media(max-width: 480px) {
       .account {
         width: 90%;
       }
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    .typewriter-text {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid #00ffff;
+      animation: typing 3s steps(30, end), blink 0.8s infinite;
     }
   </style>
 </head>
@@ -124,15 +145,8 @@
     <img src="pp.jpg" alt="Profil ALEX" class="profile-pic" />
     <h1>ALEX</h1>
     <div class="desc">
-  👨‍💻 Developer & Programmer<br>
-  💡 Fullstack Web Designer<br>
-  🛠️ Open Jasa Web & Bot<br>
-  🔒 Anti Gratisan, Full Premium<br>
-  ☁️ Hosting, Domain & VPS Ready<br>
-  🧠 AI Tools & Automation Expert<br>
-  📲 Android Modder & Jailbreaker<br>
-  🧪 Explore, Build & Innovate
-     </div>
+      <span id="typewriter" class="typewriter-text"></span>
+    </div>
 
     <div class="accounts">
       <a class="account" href="https://wa.me/6285608969326" target="_blank">WhatsApp</a>
@@ -149,6 +163,32 @@
       </div>
     </div>
   </div>
+
+  <script>
+    const teks = [
+      "👨‍💻 Developer & Programmer |",
+      "💡 Fullstack Web Designer |",
+      "🛠️ Open Jasa Web & Bot |",
+      "🔒 Anti Gratisan, Full Premium |",
+      "☁️ Hosting, Domain & VPS Ready |",
+      "🧠 AI Tools & Automation Expert |",
+      "📲 Android Modder & Jailbreaker |",
+      "🧪 Explore, Build & Innovate |"
+    ];
+    let i = 0;
+    const typewriter = document.getElementById("typewriter");
+
+    function tampilkanTeks() {
+      typewriter.classList.remove("typewriter-text");
+      void typewriter.offsetWidth; // reset animation
+      typewriter.classList.add("typewriter-text");
+      typewriter.textContent = teks[i];
+      i = (i + 1) % teks.length;
+    }
+
+    tampilkanTeks();
+    setInterval(tampilkanTeks, 3500);
+  </script>
 
 </body>
 </html>
